@@ -12,7 +12,6 @@ public interface ReadOnlyPerson {
     Name getName();
     Phone getPhone();
     Email getEmail();
-    Group getGroup();
     Address getAddress();
 
     /**
@@ -30,7 +29,6 @@ public interface ReadOnlyPerson {
                 && other.getName().equals(this.getName()) // state checks here onwards
                 && other.getPhone().equals(this.getPhone())
                 && other.getEmail().equals(this.getEmail())
-                && other.getGroup().equals(this.getGroup())
                 && other.getAddress().equals(this.getAddress()));
     }
 
@@ -51,11 +49,6 @@ public interface ReadOnlyPerson {
             builder.append(detailIsPrivate);
         }
         builder.append(getEmail())
-                .append(" Group: ");
-        if(getGroup().isPrivate()) {
-            builder.append(detailIsPrivate);
-        }
-        builder.append(getGroup())
                 .append(" Address: ");
         if (getAddress().isPrivate()) {
             builder.append(detailIsPrivate);
@@ -79,9 +72,6 @@ public interface ReadOnlyPerson {
         }
         if (!getEmail().isPrivate()) {
             builder.append(" Email: ").append(getEmail());
-        }
-        if(!getGroup().isPrivate()) {
-            builder.append(" Group: ").append(getGroup());
         }
         if (!getAddress().isPrivate()) {
             builder.append(" Address: ").append(getAddress());
